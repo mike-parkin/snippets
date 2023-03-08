@@ -1,0 +1,23 @@
+quit, and write
+```sh
+:wq
+```
+
+quit, without writing
+```sh
+:q!
+```
+
+select all lines with matching string
+```sh
+:g/{string to match}/
+```
+
+substitute at end of line
+```sh
+:s/$/{new text}/
+```
+
+
+
+

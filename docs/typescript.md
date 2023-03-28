@@ -29,13 +29,28 @@ type IntRange<F extends number, T extends number> = Exclude<
 >
 ```
 
-Use above to create fixed length array
+Fixed length array
 ```ts
-type FixedSizeArray<N extends number, T> = N extends 0
-  ? never[]
-  : {
-      [K in IntRange<0, N>]: T
-    } & {
-      length: N
-    } & ReadonlyArray<T>
+type FixedSizeArray<
+  L extends number,
+  T,
+  Acc extends T[] = []
+> = Acc['length'] extends L
+  ? Acc
+  : MaxSizeArray<L, T, [...Acc, T]>
 ```
+
+Max length array (can be between 1 and the max lenght)
+```ts
+type MaxSizeArray<
+  L extends number,
+  T,
+  Acc extends T[] = []
+> = Acc['length'] extends 0
+  ? MaxSizeArray<L, T, [T]>
+  : Acc['length'] extends L
+  ? Acc
+  : MaxSizeArray<Acc['length'], T> | MaxSizeArray<L, T, [...Acc, T]>
+```
+
+

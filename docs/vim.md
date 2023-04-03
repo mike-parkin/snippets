@@ -18,6 +18,12 @@ substitute at end of line
 :s/$/{new text}/
 ```
 
+Copy
+
+`ctrl` + `v` to enter visual mode
+move cursor over section then press `y` to copy, `c` to cut
 
 
+Paste
+`P`
 
